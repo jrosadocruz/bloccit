@@ -1,0 +1,10 @@
+<h1>All posts</h1>
+<% @posts.each do |p| %>
+  <div class="media">
+    <div class="media-body">
+      <div class="media-heading">
+        <h4><%= link_to p.title, p %></h4>
+      </div>
+    </div>
+  </div>
+<% end %>
