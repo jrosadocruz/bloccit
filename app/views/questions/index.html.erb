@@ -1,0 +1,5 @@
+<%= link_to "New question", new_question_path, class: 'btn btn-success pull-right', style: 'margin-top: 20px;' %>
+<h1>Questions</h1>
+<% @questions.each do |q| %>
+  <h4><%= link_to q.title, q %></h4>
+<% end %>

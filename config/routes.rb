@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :questions
 
   # get 'welcome/index'
   # get 'welcome/about'
