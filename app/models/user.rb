@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   end
 
   def moderator?
-    role = 'moderator'
+    role == 'moderator'
   end
 
 end
