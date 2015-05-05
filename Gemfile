@@ -28,6 +28,8 @@ gem 'pundit'
 gem 'redcarpet'
 
 
+gem 'will_paginate', '~> 3.0.5'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
