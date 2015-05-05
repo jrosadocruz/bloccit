@@ -1,4 +1,7 @@
 <%= form_for [topic, post, post.comments.new] do |f| %>
+
+
+
   <%= form_group_tag(post.errors[:body]) do %>
     <%= f.label 'New Comment' %>
     <%= f.text_area :body, class: 'form-control', placeholder: 'Enter comment body' %>

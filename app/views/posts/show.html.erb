@@ -8,9 +8,11 @@
   <h3>Comments (<%= @comments.count %>)</h3>
   <ul>
     <% @comments.each do |c| %>
-      <li><%= c.body %> by <%= c.user.name %></li>
+      <li><%= c.body %> by <%= c.user.name || c.user.email %></li>
     <% end %>
   </ul>
 <% end %>
 
+<% if policy(@comments).create? %>
 <%= render partial: 'comments/form', locals: { topic:@topic, post:@post }%>
+<% end %>
