@@ -3,3 +3,14 @@
   <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
 <% end %>
 <p><%= markdown_to_html @post.body %></p>
+
+<% if @comments %>
+  <h3>Comments (<%= @comments.count %>)</h3>
+  <ul>
+    <% @comments.each do |c| %>
+      <li><%= c.body %> by <%= c.user.name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render partial: 'comments/form', locals: { topic:@topic, post:@post }%>
