@@ -17,7 +17,7 @@
         <small>
           <%= c.user.name || c.user.email %> commented <%= time_ago_in_words(c.created_at) %> ago
           <% if policy(c).destroy? %>
-            | <%= link_to "Delete", [@topic, @post, c], method: :delete %>
+            | <%= link_to "Delete", [@post, c], method: :delete %>
           <% end %>
         </small>
         <p><%= c.body %></p>
@@ -27,5 +27,5 @@
 <% end %>
 
 <% if policy(@comments).create? %>
-  <%= render partial: 'comments/form', locals: { topic:@topic, post:@post }%>
+  <%= render partial: 'comments/form', locals: { post:@post }%>
 <% end %>
