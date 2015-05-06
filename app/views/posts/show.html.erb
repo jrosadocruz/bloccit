@@ -2,17 +2,30 @@
 <% if policy(@post).edit? %>
   <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
 <% end %>
+<% if policy(@post).destroy? %>
+  <%= link_to "Delete", [@topic, @post], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete the post?"}%>
+<% end %>
 <p><%= markdown_to_html @post.body %></p>
 
 <% if @comments %>
   <h3>Comments (<%= @comments.count %>)</h3>
-  <ul>
-    <% @comments.each do |c| %>
-      <li><%= c.body %> by <%= c.user.name || c.user.email %></li>
-    <% end %>
-  </ul>
+
+  <% @comments.each do |c| %>
+    <div class="media">
+      <div class="media-left"><%= image_tag("https://placeimg.com/40/40/people") %></div>
+      <div class="media-body">
+        <small>
+          <%= c.user.name || c.user.email %> commented <%= time_ago_in_words(c.created_at) %> ago
+          <% if policy(c).destroy? %>
+            | <%= link_to "Delete", [@topic, @post, c], method: :delete %>
+          <% end %>
+        </small>
+        <p><%= c.body %></p>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 <% if policy(@comments).create? %>
-<%= render partial: 'comments/form', locals: { topic:@topic, post:@post }%>
+  <%= render partial: 'comments/form', locals: { topic:@topic, post:@post }%>
 <% end %>
