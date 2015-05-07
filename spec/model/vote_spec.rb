@@ -21,5 +21,7 @@ describe Vote do
         expect(@vote.valid?).to eq(false)
       end
     end
+
   end
+
 end
