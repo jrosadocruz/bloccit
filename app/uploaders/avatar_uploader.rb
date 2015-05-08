@@ -25,7 +25,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url
-    'https://placeimg.com/40/40/people'
+    'https://placeimg.com/35/35/people'
   end
 
   # Process files as they are uploaded:
