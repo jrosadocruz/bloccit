@@ -12,7 +12,7 @@
 
   <% @comments.each do |c| %>
     <div class="media">
-      <div class="media-left"><%= image_tag("https://placeimg.com/40/40/people") %></div>
+      <div class="media-left"><%= image_tag(c.user.avatar.tiny.url) if c.user.avatar? %></div>
       <div class="media-body">
         <small>
           <%= c.user.name || c.user.email %> commented <%= time_ago_in_words(c.created_at) %> ago
