@@ -4,6 +4,18 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
 
+  def up_votes
+    self.votes.where(value: 1).count
+  end
+
+  def down_votes
+    self.votes.where(value: -1).count
+  end
+
+  def points
+    self.votes.sum(:value)
+  end
+
   default_scope { order('created_at DESC') }
 
   scope :for_user, -> (user)  { where(user_id: user.id)  }
