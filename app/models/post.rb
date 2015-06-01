@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
 
   default_scope { order('rank DESC') }
 
+  after_create :create_vote
+
   def up_votes
     self.votes.where(value: 1).count
   end
@@ -30,11 +32,11 @@ class Post < ActiveRecord::Base
 
   validates :title , length: { minimum: 5 }  , presence: true
   validates :body  , length: { minimum: 20 } , presence: true
-  # validates :topic , presence: true
-  # validates :user  , presence: true
 
-  # def self.for_user user
-  #   where(user_id: user.id)
-  # end
+  private
+
+  def create_vote
+    user.votes.create({value: 1, post:self})
+  end
 
 end
