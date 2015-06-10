@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
 
   default_scope { order('rank DESC') }
 
-  after_create :create_vote
+  # after_create :create_vote
 
   def up_votes
     self.votes.where(value: 1).count
@@ -24,6 +24,13 @@ class Post < ActiveRecord::Base
     age_in_days = (created_at - Time.new(1970,1,1)) / (60 * 60 * 24)
     new_rank = points + age_in_days
     update_attribute(:rank, new_rank)
+  end
+
+  def save_with_initial_vote
+    ActiveRecord::Base.transaction do
+      create_vote
+      self.save
+    end
   end
 
 
@@ -45,5 +52,7 @@ class Post < ActiveRecord::Base
   def create_vote
     user.votes.create({value: 1, post:self})
   end
+
+
 
 end
