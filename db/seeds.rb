@@ -44,7 +44,7 @@ end
 
 admin = User.new(
   name:     'Admin User',
-  email:    'admin@example.com',
+  email:    'jose@rosa.do',
   password: 'holamundo!',
   role:     'admin'
 )
