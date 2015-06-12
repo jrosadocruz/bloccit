@@ -39,7 +39,7 @@
 
 <% if @comments %>
   <h3>Comments (<%= @comments.count %>)</h3>
-  <%= render @comments %>
+  <%= render partial: 'comments/comment', collection: @comments %>
 <% end %>
 
 <% if policy(@comments).create? %>
