@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'pages/info'
 
   devise_for :users
-  resources :users, only: [:update]
+  resources :users, only: [:update, :show]
 
 
 
