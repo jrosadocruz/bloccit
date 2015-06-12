@@ -41,7 +41,7 @@
   <h3>Comments (<%= @comments.count %>)</h3>
 
   <% @comments.each do |c| %>
-    <%= content_tag :div, class: 'media', id: "comment-#{comment.id}" do %>
+    <%= content_tag :div, class: 'media', id: "comment-#{c.id}" do %>
       <div class="media-left"><%= image_tag(c.user.avatar.small.url) %></div>
       <div class="media-body">
         <small>
