@@ -48,4 +48,19 @@ describe User do
 
   end
 
+  describe "user_with_post_and_comment" do
+    before do
+      @user3 = create(:user_with_post_and_comment)
+    end
+
+    it "returns user's post" do
+      expect( @user3.posts.count ).to eq(1)
+    end
+
+    it "returns user's post comments" do
+      expect( @user3.posts.first.comments.count ).to eq(1)
+    end
+
+  end
+
 end
