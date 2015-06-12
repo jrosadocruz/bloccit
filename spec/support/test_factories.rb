@@ -19,3 +19,19 @@ module TestFactories
   end
 
 end
+
+FactoryGirl.define do
+  factory :user do
+    email 'jose@rosa.do'
+    password 'holamundo1'
+
+    # if needed
+    # is_active true
+  end
+end
+
+RSpec.configure do |config|
+  config.after :each do
+    Warden.test_reset!
+  end
+end
